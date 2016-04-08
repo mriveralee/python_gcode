@@ -30,7 +30,7 @@ G1 F2100 X144.600 Y141.900 E11.98867
 ###Example usage
 ```python
 >>> import gcode
->>> g = gcode.Gcode(open('/Users/dlaics/r/fabric/test.gcode').read())
+>>> g = gcode.Gcode('/Users/dlaics/r/fabric/test.gcode')
 >>> g
 <Gcode with 3 layers>
 >>> g.layers
@@ -44,5 +44,5 @@ G1 F2100 X144.600 Y141.900 E11.98867
 [<Layer 0 at Z=0.3, 2 lines>,
  <Layer 1 at Z=0.65, 2 lines>,
  <Layer 2 at Z=0.85, 2 lines>]
->>> open('out.gcode', 'w').write(g.construct())
+>>> g.construct('out.gcode')
 ```
