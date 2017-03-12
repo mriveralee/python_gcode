@@ -201,10 +201,11 @@ class Gcode(object):
 
 		in_preamble = True
 
-		#Cura nicely adds a "LAYER" comment just before each layer
+		# Cura nicely adds a "LAYER" comment just before each layer
+		# Or use ';LAYER:' as custom GCode Tag before layer change in Slic3r
 		if ';LAYER:' in filestring:
 			#Split into layers
-			splits = re.split(r'^;LAYER:\d+\n', filestring, flags=re.M)
+			splits = re.split(r'^;LAYER:\d*\n', filestring, flags=re.M)
 			self.preamble = Layer(splits[0].split('\n'), layernum=0)
 			self.layers = [Layer(l.split('\n'), layernum=i) for i,l in
 					enumerate(splits[1:])]
