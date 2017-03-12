@@ -79,10 +79,10 @@ class Layer(object):
 	def extents(self):
 		"""Return the extents of the layer: the min/max in x and y that
 		occur. Note this does not take arcs into account."""
-		min_x = min(self.lines, key=lambda l: l.args.get('X', float('inf'))).args['X']
-		min_y = min(self.lines, key=lambda l: l.args.get('Y', float('inf'))).args['Y']
-		max_x = max(self.lines, key=lambda l: l.args.get('X', float('-inf'))).args['X']
-		max_y = max(self.lines, key=lambda l: l.args.get('Y', float('-inf'))).args['Y']
+		min_x = min(self.lines, key=lambda l: l.args.get('X', float('inf'))).args.get('X', 0)
+		min_y = min(self.lines, key=lambda l: l.args.get('Y', float('inf'))).args.get('Y', 0)
+		max_x = max(self.lines, key=lambda l: l.args.get('X', float('-inf'))).args.get('X', 0)
+		max_y = max(self.lines, key=lambda l: l.args.get('Y', float('-inf'))).args.get('Y', 0)
 		return min_x, min_y, max_x, max_y
 
 
