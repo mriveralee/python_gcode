@@ -1,5 +1,7 @@
 import re, sys, warnings
 
+CARRIAGE_RETURN = '\r'
+
 class Line(object):
 	def __init__(self, line='', code=None, args={}, comment=None):
 		"""Parse a single line of gcode into its code and named
@@ -192,6 +194,10 @@ class Gcode(object):
 		"""Parse the gcode."""
 		if not filestring:
 			return
+
+		# Remove Carriage Returns if necessary
+		if CARRIAGE_RETURN in filestring:
+			filestring = filestring.replace(CARRIAGE_RETURN, '')
 
 		in_preamble = True
 
